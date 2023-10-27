@@ -8,18 +8,18 @@ import java.net.Socket;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-public class Cliente {
+public class Cliente1 {
 
     public static void main(String[] args) throws IOException {
         int porta = 12345;  // Porta do servidor
         String host = "localhost";  // Endereço do servidor
         
-        // Configurar o seletor de arquivo
+        // Configura o seletor de arquivo
         JFileChooser seletorArquivo = new JFileChooser();
         FileNameExtensionFilter filtroTipoArquivo = new FileNameExtensionFilter("Arquivos de texto", "txt");
         seletorArquivo.setFileFilter(filtroTipoArquivo);
 
-        // Mostrar a janela de seleção de arquivo
+        // Mostra a janela de seleção de arquivo
         int resultadoSelecao = seletorArquivo.showOpenDialog(null);
         
         if (resultadoSelecao == JFileChooser.APPROVE_OPTION) {
@@ -28,7 +28,7 @@ public class Cliente {
 
             String caminhoArquivoSelecionado = arquivoSelecionado.getAbsolutePath();
 
-            // Criar um objeto File para representar o arquivo
+            // Cria um objeto File para representar o arquivo
             File arquivo = new File(caminhoArquivoSelecionado);
             byte[] buffer = new byte[1024];
 
@@ -36,15 +36,15 @@ public class Cliente {
                 // Ler o conteúdo do arquivo para o buffer
                 fileInputStream.read(buffer);
                 
-                // Conectar ao servidor usando um socket
+                // Conecta ao servidor usando um socket
                 Socket clienteSocket = new Socket(host, porta);
                 System.out.println("Cliente conectado com sucesso!");
 
-                // Obter o OutputStream para enviar dados para o servidor
+                // Obtem o OutputStream para enviar dados para o servidor
                 OutputStream saida = clienteSocket.getOutputStream();
                 System.out.println("Enviado ao servidor com sucesso!");
 
-                // Enviar o conteúdo do arquivo para o servidor
+                // Envia o conteúdo do arquivo para o servidor
                 saida.write(buffer, 0, buffer.length);
                 saida.flush();
                 System.out.println("Arquivo enviado ao servidor com sucesso!");
@@ -55,5 +55,7 @@ public class Cliente {
         } else {
             System.out.println("Nenhum arquivo selecionado.");
         }
+        
     }
+    
 }
