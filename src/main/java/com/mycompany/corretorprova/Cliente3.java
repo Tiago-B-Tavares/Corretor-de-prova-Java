@@ -6,7 +6,7 @@ import java.nio.charset.StandardCharsets;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-public class Cliente1 {
+public class Cliente3 {
 
     public static void main(String[] args) throws IOException {
         int porta = 12345;
